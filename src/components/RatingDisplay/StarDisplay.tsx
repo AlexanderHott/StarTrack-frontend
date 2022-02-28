@@ -18,8 +18,8 @@ const StarDisplay = ({ averageRating }: StarDisplayProps) => {
     >
       <Rating
         name='half-rating-read'
-        defaultValue={averageRating}
-        value={averageRating}
+        defaultValue={0}
+        value={averageRating || 0}
         precision={0.5}
         readOnly
       />

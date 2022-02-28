@@ -3,8 +3,8 @@ import { Header, RatingDisplay } from './components';
 import { DateContext } from './utils/DateContext';
 
 function App() {
-  const [startDate, setStartDate] = React.useState(new Date());
-  const [endDate, setEndDate] = React.useState(new Date());
+  const [startDate, setStartDate] = React.useState<Date | null>(null);
+  const [endDate, setEndDate] = React.useState<Date | null>(null);
 
   return (
     <DateContext.Provider

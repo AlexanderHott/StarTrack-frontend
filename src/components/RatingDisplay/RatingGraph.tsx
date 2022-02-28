@@ -69,7 +69,7 @@ const SingleStarGraph = ({ index, percent }: SingleStarGraphType) => {
       </div>
       <LinearProgress
         variant='determinate'
-        value={percent}
+        value={percent || 0}
         style={{ height: '50px', borderRadius: '10px', width: '1000px' }}
         color='inherit'
       />
