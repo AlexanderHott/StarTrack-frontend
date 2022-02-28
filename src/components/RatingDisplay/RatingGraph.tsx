@@ -1,13 +1,42 @@
 import { LinearProgress } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
-const RatingGraph = () => {
+import { getNumberOfRatings, Ratings } from '../../utils/ratingMath';
+
+type RatingGraphProps = {
+  ratings: Ratings;
+};
+const RatingGraph = ({ ratings }: RatingGraphProps) => {
   return (
-    <div style={{ color: '#faaf00' }}>
-      <SingleStarGraph index={5} percent={90} />
-      <SingleStarGraph index={4} percent={80} />
-      <SingleStarGraph index={3} percent={70} />
-      <SingleStarGraph index={2} percent={60} />
-      <SingleStarGraph index={1} percent={50} />
+    <div
+      style={{
+        color: '#faaf00',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '1rem',
+      }}
+    >
+      <SingleStarGraph
+        index={5}
+        percent={(ratings['5'] / getNumberOfRatings(ratings)) * 100}
+      />
+      <SingleStarGraph
+        index={4}
+        percent={(ratings['4'] / getNumberOfRatings(ratings)) * 100}
+      />
+      <SingleStarGraph
+        index={3}
+        percent={(ratings['3'] / getNumberOfRatings(ratings)) * 100}
+      />
+      <SingleStarGraph
+        index={2}
+        percent={(ratings['2'] / getNumberOfRatings(ratings)) * 100}
+      />
+      <SingleStarGraph
+        index={1}
+        percent={(ratings['1'] / getNumberOfRatings(ratings)) * 100}
+      />
     </div>
   );
 };
@@ -41,10 +70,10 @@ const SingleStarGraph = ({ index, percent }: SingleStarGraphType) => {
       <LinearProgress
         variant='determinate'
         value={percent}
-        style={{ height: '30px', borderRadius: '10px', width: '1000px' }}
+        style={{ height: '50px', borderRadius: '10px', width: '1000px' }}
         color='inherit'
       />
-      <p style={{ color: 'black' }}>{percent}%</p>
+      <p style={{ color: 'black' }}>{Math.round(percent)}%</p>
     </div>
   );
 };

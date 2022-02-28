@@ -1,8 +1,11 @@
 import { Rating } from '@mui/material';
 import React from 'react';
 import styled from 'styled-components';
-
-const StarDisplay = () => {
+type StarDisplayProps = {
+  averageRating: number;
+};
+const StarDisplay = ({ averageRating }: StarDisplayProps) => {
+  console.log('averageRating', averageRating);
   return (
     <div
       style={{
@@ -15,11 +18,14 @@ const StarDisplay = () => {
     >
       <Rating
         name='half-rating-read'
-        defaultValue={2.5}
+        defaultValue={averageRating}
+        value={averageRating}
         precision={0.5}
         readOnly
       />
-      <h2 style={{ display: 'inline', marginBlock: '0' }}>2.5 out of 5</h2>
+      <h2 style={{ display: 'inline', marginBlock: '0' }}>
+        {Math.round(averageRating * 10) / 10} out of 5
+      </h2>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { DateRange } from '..';
 const Header = () => {
   return (
     <Container>
-      <h1>Star Track</h1>
+      <h1>StarTrack</h1>
       <DateRange />
     </Container>
   );

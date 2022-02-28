@@ -1,14 +1,42 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import DatePicker from 'react-date-picker';
+import { DateContext } from '../../utils/DateContext';
 
 const DateRange = () => {
-  const [from, setFrom] = useState(new Date());
-  const [to, setTo] = useState(new Date());
-
+  const { startDate, setStartDate, endDate, setEndDate } =
+    useContext(DateContext);
+  console.log(startDate, endDate);
   return (
-    <div>
-      <DatePicker value={from} onChange={setFrom} />
-      <DatePicker value={to} onChange={setTo} />
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '2rem',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '1rem',
+        }}
+      >
+        <h3>From</h3>
+        <DatePicker value={startDate} onChange={setStartDate} />
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '1rem',
+        }}
+      >
+        <h3>To</h3>
+        <DatePicker value={endDate} onChange={setEndDate} />
+      </div>
     </div>
   );
 };
