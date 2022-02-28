@@ -5,6 +5,8 @@ export type ContextType = {
   setStartDate: (date: Date) => void;
   endDate: Date | null;
   setEndDate: (date: Date) => void;
+  ip: string | null;
+  setIp: (ip: string) => void;
 };
 
 export const DateContext = createContext<ContextType>({
@@ -12,4 +14,6 @@ export const DateContext = createContext<ContextType>({
   setStartDate: () => {},
   endDate: new Date(),
   setEndDate: () => {},
+  ip: '',
+  setIp: () => {},
 });

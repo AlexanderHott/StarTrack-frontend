@@ -4,7 +4,6 @@ type StarDisplayProps = {
   averageRating: number;
 };
 const StarDisplay = ({ averageRating }: StarDisplayProps) => {
-  console.log('averageRating', averageRating);
   return (
     <div
       style={{

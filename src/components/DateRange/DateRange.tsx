@@ -5,7 +5,6 @@ import { DateContext } from '../../utils/DateContext';
 const DateRange = () => {
   const { startDate, setStartDate, endDate, setEndDate } =
     useContext(DateContext);
-  console.log(startDate, endDate);
   return (
     <div
       style={{

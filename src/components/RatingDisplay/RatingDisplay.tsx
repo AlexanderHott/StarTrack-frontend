@@ -25,30 +25,17 @@ const RatingDisplay = () => {
     '5': 0,
   });
 
-  const { startDate, endDate } = useContext(DateContext);
+  const { startDate, endDate, ip } = useContext(DateContext);
 
   useEffect(() => {
-    if (startDate && endDate) {
-      console.log('fmt', formatDate(startDate), formatDate(endDate));
+    if (startDate && endDate && ip) {
       const data = `{"startDate":"${formatDate(
         startDate
       )}","endDate": "${formatDate(endDate)}"}`;
 
-      console.log('data', data);
-
-      // axios
-      //   .post<Ratings>('http://localhost:8080/ratings/range', {
-      //     data,
-      //     headers: {
-      //       'Access-Control-Allow-Origin': '*',
-      //       'Content-Type': 'application/json;charset=UTF-8',
-      //     },
-      //   })
-      //   .then(({ data }) => setRatings(data))
-      //   .catch((err) => console.log(err));
       axios({
         method: 'POST',
-        url: 'http://localhost:8080/ratings/range',
+        url: `http://${ip}:8080/ratings/range`,
         data: data,
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -57,13 +44,14 @@ const RatingDisplay = () => {
       })
         .then(({ data }) => setRatings(data))
         .catch((err) => console.log(err));
-    } else {
+    } else if (ip) {
       axios
-        .get<Ratings>('http://localhost:8080/ratings')
+        .get<Ratings>(`http://${ip}:8080/ratings`)
         .then(({ data }) => setRatings(data))
         .catch((err) => console.log(err));
+    } else {
+      console.log('no ip');
     }
-    console.log(ratings);
   }, [endDate, startDate]);
 
   return (

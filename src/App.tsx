@@ -5,10 +5,11 @@ import { DateContext } from './utils/DateContext';
 function App() {
   const [startDate, setStartDate] = React.useState<Date | null>(null);
   const [endDate, setEndDate] = React.useState<Date | null>(null);
+  const [ip, setIp] = React.useState<string | null>(null);
 
   return (
     <DateContext.Provider
-      value={{ startDate, setStartDate, endDate, setEndDate }}
+      value={{ startDate, setStartDate, endDate, setEndDate, ip, setIp }}
     >
       <div>
         <Header />
