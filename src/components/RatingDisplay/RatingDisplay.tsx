@@ -25,17 +25,18 @@ const RatingDisplay = () => {
     '5': 0,
   });
 
-  const { startDate, endDate, ip } = useContext(DateContext);
+  const { startDate, endDate } = useContext(DateContext);
 
   useEffect(() => {
-    if (startDate && endDate && ip) {
+    console.log('ip:', window.RPiIp);
+    if (startDate && endDate && window.RPiIp) {
       const data = `{"startDate":"${formatDate(
         startDate
       )}","endDate": "${formatDate(endDate)}"}`;
 
       axios({
         method: 'POST',
-        url: `http://${ip}:8080/ratings/range`,
+        url: `http://${window.RPiIp}:8080/ratings/range`,
         data: data,
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -44,15 +45,15 @@ const RatingDisplay = () => {
       })
         .then(({ data }) => setRatings(data))
         .catch((err) => console.log(err));
-    } else if (ip) {
+    } else if (window.RPiIp) {
       axios
-        .get<Ratings>(`http://${ip}:8080/ratings`)
+        .get<Ratings>(`http://${window.RPiIp}:8080/ratings`)
         .then(({ data }) => setRatings(data))
         .catch((err) => console.log(err));
     } else {
       console.log('no ip');
     }
-  }, [endDate, startDate, ip]);
+  }, [endDate, startDate]);
 
   return (
     <div

@@ -1,23 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { DateRange } from '..';
-import IPInput from './IPInput';
 
 const Header = () => {
   return (
     <Container>
       <h1>StarTrack</h1>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '2rem',
-        }}
-      >
-        <IPInput />
-        <DateRange />
-      </div>
+
+      <DateRange />
     </Container>
   );
 };
