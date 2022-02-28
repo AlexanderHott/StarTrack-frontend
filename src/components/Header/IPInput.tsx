@@ -1,15 +1,28 @@
 import { InputOutlined } from '@mui/icons-material';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { DateContext } from '../../utils/DateContext';
 
 const IPInput = () => {
-  const { ip, setIp } = useContext(DateContext);
-
+  const { setIp } = useContext(DateContext);
+  const [value, setValue] = useState('');
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      setIp(value);
+      console.log(value);
+    }
+  };
   return (
     <div>
       <Span>Enter Pi's IP:</Span>
-      <Input value={ip || ''} onChange={(e) => setIp(e.target.value)} />
+      <Input
+        value={value || ''}
+        onChange={handleInput}
+        onKeyDown={handleKeyDown}
+      />
     </div>
   );
 };

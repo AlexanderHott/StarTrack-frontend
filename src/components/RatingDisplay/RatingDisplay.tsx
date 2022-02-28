@@ -52,7 +52,7 @@ const RatingDisplay = () => {
     } else {
       console.log('no ip');
     }
-  }, [endDate, startDate]);
+  }, [endDate, startDate, ip]);
 
   return (
     <div
