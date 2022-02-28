@@ -5,10 +5,8 @@ import { DateRange } from '..';
 const Header = () => {
   return (
     <Container>
-      Header
-      <div>
-        <DateRange />
-      </div>
+      <h1>Star Track</h1>
+      <DateRange />
     </Container>
   );
 };
@@ -16,7 +14,9 @@ const Header = () => {
 export default Header;
 
 const Container = styled.div`
-  background-color: hsl(185, 100%, 81%);
+  padding-inline: 2rem;
+  background-color: #ededed;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 `;

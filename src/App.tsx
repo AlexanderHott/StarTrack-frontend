@@ -1,11 +1,11 @@
 import React from 'react';
-import { DateRange, Header } from './components';
+import { Header, RatingDisplay } from './components';
 
 function App() {
   return (
     <div>
-      <Header/>
-      
+      <Header />
+      <RatingDisplay />
     </div>
   );
 }
