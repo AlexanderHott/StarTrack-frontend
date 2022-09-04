@@ -17,26 +17,30 @@ const RatingGraph = ({ ratings }: RatingGraphProps) => {
         gap: '1rem',
       }}
     >
-      <SingleStarGraph
-        index={5}
-        percent={(ratings['5'] / getNumberOfRatings(ratings)) * 100}
-      />
-      <SingleStarGraph
-        index={4}
-        percent={(ratings['4'] / getNumberOfRatings(ratings)) * 100}
-      />
-      <SingleStarGraph
-        index={3}
-        percent={(ratings['3'] / getNumberOfRatings(ratings)) * 100}
-      />
-      <SingleStarGraph
-        index={2}
-        percent={(ratings['2'] / getNumberOfRatings(ratings)) * 100}
-      />
-      <SingleStarGraph
-        index={1}
-        percent={(ratings['1'] / getNumberOfRatings(ratings)) * 100}
-      />
+      {ratings && (
+        <>
+          <SingleStarGraph
+            index={5}
+            percent={(ratings['5'] / getNumberOfRatings(ratings)) * 100}
+          />
+          <SingleStarGraph
+            index={4}
+            percent={(ratings['4'] / getNumberOfRatings(ratings)) * 100}
+          />
+          <SingleStarGraph
+            index={3}
+            percent={(ratings['3'] / getNumberOfRatings(ratings)) * 100}
+          />
+          <SingleStarGraph
+            index={2}
+            percent={(ratings['2'] / getNumberOfRatings(ratings)) * 100}
+          />
+          <SingleStarGraph
+            index={1}
+            percent={(ratings['1'] / getNumberOfRatings(ratings)) * 100}
+          />
+        </>
+      )}
     </div>
   );
 };

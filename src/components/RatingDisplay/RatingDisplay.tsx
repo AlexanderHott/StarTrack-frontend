@@ -55,6 +55,8 @@ const RatingDisplay = () => {
     }
   }, [endDate, startDate]);
 
+  console.log('ratings', ratings);
+
   return (
     <div
       style={{
@@ -65,7 +67,7 @@ const RatingDisplay = () => {
       }}
     >
       <StarDisplay averageRating={getAverageRating(ratings)} />
-      <TotalRatings ratings={getNumberOfRatings(ratings)} />
+      <TotalRatings ratings={ratings ? getNumberOfRatings(ratings) : 0} />
       <RatingGraph ratings={ratings} />
     </div>
   );
